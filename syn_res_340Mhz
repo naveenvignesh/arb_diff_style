@@ -1,0 +1,657 @@
+/apps/synopsys/I-2013.12-SP5/bin/dc_shell
+
+                      Design Compiler Graphical
+                            DC Ultra (TM)
+                             DFTMAX (TM)
+                         Power Compiler (TM)
+                           DesignWare (R)
+                           DC Expert (TM)
+                         Design Vision (TM)
+                          HDL Compiler (TM)
+                         VHDL Compiler (TM)
+                            DFT Compiler
+                        Library Compiler (TM)
+                         Design Compiler(R)
+
+          Version I-2013.12-SP5 for RHEL32 -- Jul 20, 2014
+               Copyright (c) 1988-2014 Synopsys, Inc.
+
+This software and the associated documentation are confidential and 
+proprietary to Synopsys, Inc. Your use or disclosure of this software 
+is subject to the terms and conditions of a written license agreement 
+between you, or your company, and Synopsys, Inc.
+
+Information: As of the J-2014.09 version of dc_shell, the 32-bit
+             version of the product will not be delivered by default.
+             If you require a 32-bit version for any reason, please
+             contact Synopsys technical support.
+
+Initializing...
+#
+# set the inf.clk to be your interface name <name>.clk
+# set the inf.rst to be your interface name <name>.rst
+#
+set link_library {/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25 /apps/synopsys/I-2013.12-SP5/libraries/syn/dw_foundation.sldb}
+/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25 /apps/synopsys/I-2013.12-SP5/libraries/syn/dw_foundation.sldb
+set target_library {/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25}
+/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25
+analyze -format sverilog { arbiter.sv }
+Running PRESTO HDLC
+Searching for ./arbiter.sv
+Compiling source file ./arbiter.sv
+Presto compilation completed successfully.
+Loading db file '/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25'
+Loading db file '/apps/synopsys/I-2013.12-SP5/libraries/syn/dw_foundation.sldb'
+1
+elaborate RR_arbiter
+Loading db file '/apps/synopsys/I-2013.12-SP5/libraries/syn/gtech.db'
+Loading db file '/apps/synopsys/I-2013.12-SP5/libraries/syn/standard.sldb'
+  Loading link library 'tc240c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+Warning:  ./arbiter.sv:134: signed to unsigned assignment occurs. (VER-318)
+
+Statistics for case statements in always block at line 33 in file
+	'./arbiter.sv'
+===============================================
+|           Line           |  full/ parallel  |
+===============================================
+|            39            |    auto/auto     |
+===============================================
+
+Inferred memory devices in process
+	in routine RR_arbiter line 22 in file
+		'./arbiter.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|      gnt_d_reg      | Flip-flop |  16   |  Y  | N  | Y  | N  | N  | N  | N  |
+===============================================================================
+
+Inferred memory devices in process
+	in routine RR_arbiter line 131 in file
+		'./arbiter.sv'.
+===============================================================================
+|    Register Name    |   Type    | Width | Bus | MB | AR | AS | SR | SS | ST |
+===============================================================================
+|   req_vec_rr_reg    | Flip-flop |  32   |  Y  | N  | Y  | N  | N  | N  | N  |
+|   req_vec_rr_reg    | Flip-flop |  32   |  Y  | N  | N  | Y  | N  | N  | N  |
+===============================================================================
+Statistics for MUX_OPs
+===========================================================
+| block name/line  | Inputs | Outputs | # sel inputs | MB |
+===========================================================
+|  RR_arbiter/40   |   16   |    1    |      4       | N  |
+|  RR_arbiter/44   |   16   |    1    |      4       | N  |
+|  RR_arbiter/48   |   16   |    1    |      4       | N  |
+|  RR_arbiter/52   |   16   |    1    |      4       | N  |
+|  RR_arbiter/56   |   16   |    1    |      4       | N  |
+|  RR_arbiter/60   |   16   |    1    |      4       | N  |
+|  RR_arbiter/64   |   16   |    1    |      4       | N  |
+|  RR_arbiter/68   |   16   |    1    |      4       | N  |
+|  RR_arbiter/72   |   16   |    1    |      4       | N  |
+|  RR_arbiter/76   |   16   |    1    |      4       | N  |
+|  RR_arbiter/80   |   16   |    1    |      4       | N  |
+|  RR_arbiter/84   |   16   |    1    |      4       | N  |
+|  RR_arbiter/88   |   16   |    1    |      4       | N  |
+|  RR_arbiter/92   |   16   |    1    |      4       | N  |
+|  RR_arbiter/96   |   16   |    1    |      4       | N  |
+|  RR_arbiter/100  |   16   |    1    |      4       | N  |
+===========================================================
+Warning:  ./arbiter.sv:144: Netlist for always block is empty. (ELAB-985)
+Presto compilation completed successfully.
+Elaborated 1 design.
+Current design is now 'RR_arbiter'.
+1
+create_clock clk -name clk -period 1.5
+1
+set_propagated_clock clk
+Information: set_input_delay values are added to the propagated clock skew. (TIM-113)
+1
+set_clock_uncertainty 0.25 clk
+1
+set_propagated_clock clk
+Information: set_input_delay values are added to the propagated clock skew. (TIM-113)
+1
+set_output_delay 0.5 -clock clk [all_outputs]
+1
+set all_inputs_wo_rst_clk [remove_from_collection [remove_from_collection [all_inputs] [get_port clk]] [get_port rst]]
+{req[15] req[14] req[13] req[12] req[11] req[10] req[9] req[8] req[7] req[6] req[5] req[4] req[3] req[2] req[1] req[0]}
+set_driving_cell -lib_cell CND2X1 $all_inputs_wo_rst_clk
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+1
+set_input_delay 0.6 -clock clk $all_inputs_wo_rst_clk
+1
+set_output_delay 0.6 -clock clk [all_outputs]
+1
+set_fix_hold [ get_clocks clk ]
+1
+set_output_delay 0.3 -clock clk [all_outputs]
+1
+set_wire_load_model -name T8G00TW8
+1
+compile_ultra
+Alib files are up-to-date.
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | I-2013.12-DWBB_201312.5 |     *     |
+| Licensed DW Building Blocks        | I-2013.12-DWBB_201312.5 |     *     |
+============================================================================
+
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+
+Information: There are 16 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
+
+
+Loaded alib file './alib-52/tc240c.db_NOMIN25.alib'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'RR_arbiter'
+Information: Added key list 'DesignWare' to design 'RR_arbiter'. (DDB-72)
+ Implement Synthetic for 'RR_arbiter'.
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
+  Mapping Optimization (Phase 3)
+  Mapping Optimization (Phase 4)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:16    4066.0      2.13     155.9       0.0                                0.00
+    0:00:16    4066.0      2.13     155.9       0.0                                0.00
+    0:00:16    4066.0      2.13     155.9       0.0                                0.00
+    0:00:17    4059.5      2.13     155.9       0.0                                0.00
+  Re-synthesis Optimization (Phase 1)
+  Re-synthesis Optimization (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('fall') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+Information: Input delay ('rise') on clock port 'clk' will be added to the clock's propagated skew. (TIM-112)
+
+
+
+  Beginning Delay Optimization Phase
+  ----------------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:22    2936.0      2.26     165.0       0.0                                0.00
+    0:00:22    3076.5      2.13     157.4       0.0                                0.00
+    0:00:23    3088.0      2.12     154.7       0.0                                0.00
+    0:00:25    3123.0      2.10     154.0       0.0                                0.00
+    0:00:25    3123.0      2.10     154.0       0.0                                0.00
+    0:00:25    3140.5      2.09     153.6       0.0                                0.00
+    0:00:25    3140.5      2.09     153.6       0.0                                0.00
+    0:00:26    3222.5      2.08     152.8       0.0                                0.00
+    0:00:26    3222.5      2.08     152.8       0.0                                0.00
+    0:00:30    3465.0      2.01     148.2       0.0                                0.00
+    0:00:30    3465.0      2.01     148.2       0.0                                0.00
+    0:00:34    3533.5      2.01     148.1       0.0                                0.00
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:34    3533.5      2.01     148.2       0.0                                0.00
+    0:00:35    3543.5      2.01     147.8       0.0                                0.00
+    0:00:35    3543.5      2.01     147.8       0.0                                0.00
+    0:00:35    3543.5      2.01     147.8       0.0                                0.00
+    0:00:35    3543.5      2.01     147.8       0.0                                0.00
+    0:00:36    3543.5      2.01     147.8       0.0                                0.00
+    0:00:36    3543.5      2.01     147.8       0.0                                0.00
+    0:00:36    3543.5      2.01     147.8       0.0                                0.00
+
+
+  Beginning Design Rule Fixing  (min_path)
+  ----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:36    3543.5      2.01     147.8       0.0                               -0.11
+  Global Optimization (Phase 31)
+  Global Optimization (Phase 32)
+  Global Optimization (Phase 33)
+    0:00:36    3545.5      2.01     147.8       0.0                                0.00
+    0:00:37    3497.0      2.01     147.8       0.0                               -0.05
+    0:00:37    3497.0      2.01     147.8       0.0                               -0.05
+    0:00:38    3539.0      1.98     146.5       0.0 req_vec_rr_reg[4][0]/D        -0.30
+    0:00:38    3555.0      1.98     146.6       0.0                               -0.30
+    0:00:41    3578.5      1.98     146.4       0.0                               -0.29
+    0:00:41    3585.5      1.98     146.4       0.0                                0.00
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:41    3585.5      1.98     146.4       0.0                                0.00
+    0:00:41    3581.5      1.98     149.8       0.0                               -0.02
+    0:00:41    3581.5      1.98     149.8       0.0                               -0.02
+
+
+  Beginning Area-Recovery Phase  (max_area 0)
+  -----------------------------
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                             MIN DELAY
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            COST   
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:41    3581.5      1.98     149.8       0.0                               -0.02
+  Global Optimization (Phase 34)
+  Global Optimization (Phase 35)
+  Global Optimization (Phase 36)
+  Global Optimization (Phase 37)
+  Global Optimization (Phase 38)
+  Global Optimization (Phase 39)
+  Global Optimization (Phase 40)
+  Global Optimization (Phase 41)
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+  Global Optimization (Phase 46)
+  Global Optimization (Phase 47)
+  Global Optimization (Phase 48)
+  Global Optimization (Phase 49)
+  Global Optimization (Phase 50)
+  Global Optimization (Phase 51)
+  Global Optimization (Phase 52)
+  Global Optimization (Phase 53)
+  Global Optimization (Phase 54)
+  Global Optimization (Phase 55)
+  Global Optimization (Phase 56)
+  Global Optimization (Phase 57)
+  Global Optimization (Phase 58)
+  Global Optimization (Phase 59)
+  Global Optimization (Phase 60)
+  Global Optimization (Phase 61)
+  Global Optimization (Phase 62)
+  Global Optimization (Phase 63)
+  Global Optimization (Phase 64)
+  Global Optimization (Phase 65)
+    0:00:43    3472.0      1.96     149.3       0.0 req_vec_rr_reg[0][0]/D        -0.29
+    0:00:43    3484.5      1.96     149.0       0.0                               -0.29
+    0:00:47    3514.0      1.96     148.9       0.0                               -0.29
+    0:00:48    3521.0      1.96     148.6       0.0                                0.00
+    0:00:48    3527.5      1.96     146.5       0.0                               -0.04
+    0:00:49    3527.5      1.96     146.5       0.0                               -0.04
+    0:00:49    3527.5      1.96     146.5       0.0                               -0.04
+    0:00:49    3528.5      1.96     146.6       0.0                               -0.04
+    0:00:49    3528.5      1.96     146.6       0.0                               -0.04
+    0:00:50    3528.5      1.96     146.6       0.0                               -0.04
+    0:00:50    3528.5      1.96     146.6       0.0                               -0.04
+    0:00:52    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:52    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:53    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:53    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:54    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:54    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:55    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:55    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:55    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:55    3573.0      1.95     145.5       0.0                               -0.04
+    0:00:56    3573.0      1.95     145.5       0.0                               -0.04
+Loading db file '/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25'
+
+  Optimization Complete
+  ---------------------
+1
+create_clock clk -name clk -period 3.45
+1
+update_timing
+Information: Updating design information... (UID-85)
+1
+report_timing -max_paths 3
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 3
+Design : RR_arbiter
+Version: I-2013.12-SP5
+Date   : Sat Jul  9 19:14:14 2016
+****************************************
+
+Operating Conditions: NOMIN25   Library: tc240c
+Wire Load Model Mode: top
+
+  Startpoint: req[5] (input port clocked by clk)
+  Endpoint: req_vec_rr_reg[6][1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RR_arbiter         T8G00TW8              tc240c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.60       0.60 r
+  req[5] (in)                              0.07       0.67 r
+  U1331/Z (CNIVX4)                         0.20       0.86 r
+  U1443/Z (CANR1X4)                        0.08       0.95 f
+  U1447/Z (CANR11X2)                       0.16       1.11 r
+  U1451/Z (CND2X4)                         0.13       1.24 f
+  U1108/Z (CND2X1)                         0.08       1.32 r
+  U1556/Z (CNR2X2)                         0.08       1.41 f
+  U1557/Z (CND3X4)                         0.08       1.49 r
+  U1558/Z (CIVX8)                          0.09       1.58 f
+  U1087/Z (CND2X4)                         0.05       1.62 r
+  U1570/Z (CND3X2)                         0.09       1.72 f
+  U1571/Z (CANR1X2)                        0.14       1.85 r
+  U1594/Z (CND4X2)                         0.14       2.00 f
+  U1845/Z (COND1X2)                        0.10       2.10 r
+  U1893/Z (CND2X2)                         0.10       2.20 f
+  U1932/Z (CNR2X2)                         0.09       2.29 r
+  U2015/Z (CND2X2)                         0.10       2.39 f
+  U2142/Z (CNR2X4)                         0.12       2.50 r
+  U2325/Z (CND2X4)                         0.12       2.63 f
+  U2431/Z (CNIVX4)                         0.15       2.78 f
+  U2491/Z (CND2X2)                         0.09       2.87 r
+  U2495/Z (CND2X1)                         0.10       2.96 f
+  req_vec_rr_reg[6][1]/D (CFD4QX1)         0.00       2.96 f
+  data arrival time                                   2.96
+
+  clock clk (rise edge)                    3.45       3.45
+  clock network delay (ideal)              0.00       3.45
+  clock uncertainty                       -0.25       3.20
+  req_vec_rr_reg[6][1]/CP (CFD4QX1)        0.00       3.20 r
+  library setup time                      -0.23       2.97
+  data required time                                  2.97
+  -----------------------------------------------------------
+  data required time                                  2.97
+  data arrival time                                  -2.96
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+  Startpoint: req[5] (input port clocked by clk)
+  Endpoint: req_vec_rr_reg[2][1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RR_arbiter         T8G00TW8              tc240c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.60       0.60 r
+  req[5] (in)                              0.07       0.67 r
+  U1331/Z (CNIVX4)                         0.20       0.86 r
+  U1443/Z (CANR1X4)                        0.08       0.95 f
+  U1447/Z (CANR11X2)                       0.16       1.11 r
+  U1451/Z (CND2X4)                         0.13       1.24 f
+  U1108/Z (CND2X1)                         0.08       1.32 r
+  U1556/Z (CNR2X2)                         0.08       1.41 f
+  U1557/Z (CND3X4)                         0.08       1.49 r
+  U1558/Z (CIVX8)                          0.09       1.58 f
+  U1087/Z (CND2X4)                         0.05       1.62 r
+  U1570/Z (CND3X2)                         0.09       1.72 f
+  U1571/Z (CANR1X2)                        0.14       1.85 r
+  U1594/Z (CND4X2)                         0.14       2.00 f
+  U1845/Z (COND1X2)                        0.10       2.10 r
+  U1893/Z (CND2X2)                         0.10       2.20 f
+  U1932/Z (CNR2X2)                         0.09       2.29 r
+  U2015/Z (CND2X2)                         0.10       2.39 f
+  U2142/Z (CNR2X4)                         0.12       2.50 r
+  U2325/Z (CND2X4)                         0.12       2.63 f
+  U2431/Z (CNIVX4)                         0.15       2.78 f
+  U2491/Z (CND2X2)                         0.09       2.87 r
+  U2497/Z (CND2X1)                         0.10       2.96 f
+  req_vec_rr_reg[2][1]/D (CFD4QX1)         0.00       2.96 f
+  data arrival time                                   2.96
+
+  clock clk (rise edge)                    3.45       3.45
+  clock network delay (ideal)              0.00       3.45
+  clock uncertainty                       -0.25       3.20
+  req_vec_rr_reg[2][1]/CP (CFD4QX1)        0.00       3.20 r
+  library setup time                      -0.23       2.97
+  data required time                                  2.97
+  -----------------------------------------------------------
+  data required time                                  2.97
+  data arrival time                                  -2.96
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+  Startpoint: req[5] (input port clocked by clk)
+  Endpoint: req_vec_rr_reg[10][1]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  RR_arbiter         T8G00TW8              tc240c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.60       0.60 r
+  req[5] (in)                              0.07       0.67 r
+  U1331/Z (CNIVX4)                         0.20       0.86 r
+  U1443/Z (CANR1X4)                        0.08       0.95 f
+  U1447/Z (CANR11X2)                       0.16       1.11 r
+  U1451/Z (CND2X4)                         0.13       1.24 f
+  U1108/Z (CND2X1)                         0.08       1.32 r
+  U1556/Z (CNR2X2)                         0.08       1.41 f
+  U1557/Z (CND3X4)                         0.08       1.49 r
+  U1558/Z (CIVX8)                          0.09       1.58 f
+  U1087/Z (CND2X4)                         0.05       1.62 r
+  U1570/Z (CND3X2)                         0.09       1.72 f
+  U1571/Z (CANR1X2)                        0.14       1.85 r
+  U1594/Z (CND4X2)                         0.14       2.00 f
+  U1845/Z (COND1X2)                        0.10       2.10 r
+  U1893/Z (CND2X2)                         0.10       2.20 f
+  U1932/Z (CNR2X2)                         0.09       2.29 r
+  U2015/Z (CND2X2)                         0.10       2.39 f
+  U2142/Z (CNR2X4)                         0.12       2.50 r
+  U2325/Z (CND2X4)                         0.12       2.63 f
+  U2431/Z (CNIVX4)                         0.15       2.78 f
+  U2491/Z (CND2X2)                         0.09       2.87 r
+  U2499/Z (CND2X1)                         0.10       2.96 f
+  req_vec_rr_reg[10][1]/D (CFD4QX1)        0.00       2.96 f
+  data arrival time                                   2.96
+
+  clock clk (rise edge)                    3.45       3.45
+  clock network delay (ideal)              0.00       3.45
+  clock uncertainty                       -0.25       3.20
+  req_vec_rr_reg[10][1]/CP (CFD4QX1)       0.00       3.20 r
+  library setup time                      -0.23       2.97
+  data required time                                  2.97
+  -----------------------------------------------------------
+  data required time                                  2.97
+  data arrival time                                  -2.96
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1
+write -hierarchy -format verilog -output RR_arbiter_gates.v
+Writing verilog file '/home/bo/boop3386/Documents/arb_test/arb_diff_style/RR_arbiter_gates.v'.
+1
+report_area
+ 
+****************************************
+Report : area
+Design : RR_arbiter
+Version: I-2013.12-SP5
+Date   : Sat Jul  9 19:14:14 2016
+****************************************
+
+Library(s) Used:
+
+    tc240c (File: /apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25)
+
+Number of ports:                           34
+Number of nets:                          1722
+Number of cells:                         1683
+Number of combinational cells:           1603
+Number of sequential cells:                80
+Number of macros/black boxes:               0
+Number of buf/inv:                        259
+Number of references:                      98
+
+Combinational area:               3049.500000
+Buf/Inv area:                      431.500000
+Noncombinational area:             523.500000
+Macro/Black Box area:                0.000000
+Net Interconnect area:      undefined  (Wire load has zero net area)
+
+Total cell area:                  3573.000000
+Total area:                 undefined
+1
+report_power
+Loading db file '/apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25'
+Warning: Main library 'tc240c' does not specify the following unit required for power: 'Leakage Power'. (PWR-424)
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+Warning: Design has unannotated primary inputs. (PWR-414)
+Warning: Design has unannotated sequential cell outputs. (PWR-415)
+ 
+****************************************
+Report : power
+        -analysis_effort low
+Design : RR_arbiter
+Version: I-2013.12-SP5
+Date   : Sat Jul  9 19:14:15 2016
+****************************************
+
+
+Library(s) Used:
+
+    tc240c (File: /apps/toshiba/sjsu/synopsys/tc240c/tc240c.db_NOMIN25)
+
+
+Operating Conditions: NOMIN25   Library: tc240c
+Wire Load Model Mode: top
+
+Design        Wire Load Model            Library
+------------------------------------------------
+RR_arbiter             T8G00TW8          tc240c
+
+
+Global Operating Voltage = 2.5  
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000ff
+    Time Units = 1ns
+    Dynamic Power Units = 1uW    (derived from V,C,T units)
+    Leakage Power Units = Unitless
+
+
+  Cell Internal Power  =  22.6325 mW   (61%)
+  Net Switching Power  =  14.6170 mW   (39%)
+                         ---------
+Total Dynamic Power    =  37.2495 mW  (100%)
+
+Cell Leakage Power     =   0.0000 
+
+Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799)
+
+                 Internal         Switching           Leakage            Total
+Power Group      Power            Power               Power              Power   (   %    )  Attrs
+--------------------------------------------------------------------------------------------------
+io_pad             0.0000            0.0000            0.0000               NA   (     N/A)
+memory             0.0000            0.0000            0.0000               NA   (     N/A)
+black_box          0.0000            0.0000            0.0000               NA   (     N/A)
+clock_network      0.0000            0.0000            0.0000               NA   (     N/A)
+register       1.1535e+04        2.3740e+03            0.0000               NA   (     N/A)
+sequential         0.0000            0.0000            0.0000               NA   (     N/A)
+combinational  1.1097e+04        1.2243e+04            0.0000               NA   (     N/A)
+--------------------------------------------------------------------------------------------------
+Total          2.2633e+04 uW     1.4617e+04 uW         0.0000               NA        
+1
+quit
+
+Thank you...
+--> Error: Either dynamic power or leakage power, in the library, is unitless. Unable to display complete power group summary. (PWR-799) <--
+
+
+synthesis failed
+
+

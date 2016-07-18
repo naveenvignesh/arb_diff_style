@@ -1,0 +1,44 @@
+ncverilog: 14.10-p001: (c) Copyright 1995-2014 Cadence Design Systems, Inc.
+TOOL:	ncverilog	14.10-p001: Started on Jul 09, 2016 at 19:38:29 PDT
+ncverilog
+	+sv
+	+access+r
+	+incdir+/apps/synopsys/I-2013.12-SP5/dw/dw02/src_ver
+	tb_arbiter.sv
+	arbiter_modified.sv
+file: tb_arbiter.sv
+	module worklib.tb_arbiter:sv
+		errors: 0, warnings: 0
+file: arbiter_modified.sv
+	module worklib.RR_arbiter:sv
+		errors: 0, warnings: 0
+		Caching library 'worklib' ....... Done
+	Elaborating the design hierarchy:
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.RR_arbiter:sv <0x722594ac>
+			streams:   7, words: 15174
+		worklib.tb_arbiter:sv <0x7267550b>
+			streams:   6, words:  4416
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                  Instances  Unique
+		Modules:                  2       2
+		Registers:               30      30
+		Scalar wires:             2       -
+		Vectored wires:           3       -
+		Always blocks:            5       5
+		Initial blocks:           3       3
+		Clocking blocks:          1       1
+		Cont. assignments:        0       1
+		Pseudo assignments:       2       2
+		Simulation timescale:  10ps
+	Writing initial simulation snapshot: worklib.tb_arbiter:sv
+Loading snapshot worklib.tb_arbiter:sv .................... Done
+ncsim> source /apps/cadence/INCISIV141/tools/inca/files/ncsimrc
+ncsim> run
+Simulation complete via $finish(1) at time 1200 NS + 0
+./tb_arbiter.sv:32     $finish;
+ncsim> exit
+TOOL:	ncverilog	14.10-p001: Exiting on Jul 09, 2016 at 19:38:31 PDT  (total: 00:00:02)

@@ -1,0 +1,26 @@
+//
+// File created by:  ncverilog
+// Do not modify this file
+//
++sv
++access+r
++incdir+/apps/synopsys/I-2013.12-SP5/dw/dw02/src_ver
+-MESSAGES
++EMGRLOG
+ncverilog.log
+-XLSTIME
+1468118309
+-XLKEEP
+-XLMODE
+./INCA_libs/irun.lnx86.14.10.nc
+-RUNMODE
+-CDSLIB
+./INCA_libs/irun.lnx86.14.10.nc/cds.lib
+-HDLVAR
+./INCA_libs/irun.lnx86.14.10.nc/hdl.var
+-XLNAME
+ncverilog
+-XLVERSION
+"TOOL:	ncverilog	14.10-p001"
+-XLNAME
+./INCA_libs/irun.lnx86.14.10.nc/eecad45.engr.sjsu.edu_10431
